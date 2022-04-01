@@ -8,15 +8,17 @@
 
 simple docker container to run (scheduled) s3cmd
 
+
+**Note**: you must create your [.s3cfg](https://s3tools.org/kb/item14.htm) first!
+
+
 ## one shot example
 
 ```bash
-docker run -it --rm -v ${PWD}/.s3cfg:/root/.s3cfg ghcr.io/b2un0/docker-s3cmd:main s3cmd ls
+docker run -it --rm -v ${PWD}/.s3cfg:/root/.s3cfg ghcr.io/b2un0/docker-s3cmd s3cmd ls
 ```
 
-## example scheduled example
-
-Note: you must create your [.s3cfg](https://s3tools.org/kb/item14.htm) first!
+## scheduled example
 
 `docker-compose.yaml`
 
