@@ -9,7 +9,7 @@ ENV SCHEDULE="" \
 
 RUN apt update && \
     apt install -y s3cmd cron ca-certificates && \
-    apt clean \
+    apt clean && \
     mkdir /sync
 
 WORKDIR /sync
