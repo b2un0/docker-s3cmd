@@ -8,9 +8,7 @@
 
 simple docker container to run (scheduled) s3cmd
 
-
 **Note**: you must create your [.s3cfg](https://s3tools.org/kb/item14.htm) first!
-
 
 ## one shot example
 
@@ -24,17 +22,14 @@ docker run -it --rm -v ${PWD}/.s3cfg:/root/.s3cfg ghcr.io/b2un0/docker-s3cmd s3c
 
 ```yaml
 services:
-    something:
-        image: ghcr.io/b2un0/docker-s3cmd:latest
-        restart: unless-stopped
-        network_mode: bridge
-        # command: "s3cmd ls" # for one shot
-        volumes:
-            - ./root/.s3cfg:/root/.s3cfg:ro
-            - /opt/homebridge/data/backups:/sync/homebridge/:ro
-            - /opt/deconz/:/sync/deconz/:ro
-            - /opt/nodered/:/sync/nodered/:ro
-        environment:
-            SCHEDULE: "15 3 * * *" # https://crontab.guru/
-            CRON_CMD: "s3cmd sync --dry-run /sync s3://some-bucket"
+  something:
+    image: ghcr.io/b2un0/docker-s3cmd:latest
+    restart: unless-stopped
+    network_mode: bridge
+    # command: "s3cmd ls" # for one shot
+    volumes:
+      - ./root/.s3cfg:/root/.s3cfg:ro
+    environment:
+      SCHEDULE: "15 3 * * *" # https://crontab.guru/
+      CRON_CMD: "s3cmd sync --dry-run /sync s3://some-bucket"
 ```

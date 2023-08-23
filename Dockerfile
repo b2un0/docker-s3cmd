@@ -1,8 +1,4 @@
-FROM debian:bullseye-slim
-
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VERSION
+FROM debian:bookworm-slim
 
 ENV SCHEDULE="" \
     CRON_CMD=""
@@ -21,8 +17,3 @@ ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/sbin/cron", "-f"]
 
 SHELL ["/bin/bash"]
-
-LABEL org.opencontainers.image.created=${BUILD_DATE} \
-      org.opencontainers.image.revision=${VCS_REF} \
-      org.opencontainers.image.version=${VERSION} \
-      org.opencontainers.image.source="https://github.com/b2un0/docker-s3cmd"
